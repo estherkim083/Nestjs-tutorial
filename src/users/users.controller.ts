@@ -17,7 +17,7 @@ import { UsersService } from './users.service';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 import { AuthService } from './auth.service';
-import { CurrentUser } from './decorators/current-user-decorator';
+import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.entity';
 import { AuthGuard } from '../guards/auth.guard';
 
@@ -53,8 +53,8 @@ export class UsersController {
   }
 
   @Post('/signin')
-  async signin(@Body() boy: CreateUserDto, @Session() session: any) {
-    const user = await this.authService.signin(boy.email, boy.password);
+  async signin(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signin(body.email, body.password);
     session.userId = user.id;
     return user;
   }

@@ -14,3 +14,5 @@ return this.repo.find({ where: { email } });
 npm run start:dev
 
 npm install cookie-session @types/cookie-session
+
+npm run test:watch

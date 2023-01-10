@@ -4,8 +4,16 @@ import {
   CallHandler,
   Injectable,
 } from '@nestjs/common';
-
+import { User } from '../user.entity';
 import { UsersService } from '../users.service';
+
+declare global {
+  namespace Express {
+    interface Request {
+      currentUser?: User;
+    }
+  }
+}
 
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor {

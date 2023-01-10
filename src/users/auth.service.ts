@@ -41,7 +41,7 @@ export class AuthService {
     if (storedHash !== hash.toString('hex')) {
       throw new BadRequestException('bad password');
     }
-    console.log(user);
+
     return user;
   }
 }
